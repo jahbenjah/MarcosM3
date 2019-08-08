@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-MarcosApp.Web-EBA1D404-3585-491D-AAD4-01BC6C4E1F6E</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\MarcosM3.Core\MarcosM3.Core.csproj" />
+    <ProjectReference Include="..\MarcosM3.Infrastructure\MarcosM3.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
