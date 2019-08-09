@@ -1,6 +1,6 @@
 using System;
 
-namespace MarcosApp.Web.Models
+namespace MarcosM3.Web.Models
 {
     public class ErrorViewModel
     {

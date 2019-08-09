@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace MarcosApp.Web
+namespace MarcosM3.Web
 {
     public class Program
     {

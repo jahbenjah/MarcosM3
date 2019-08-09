@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MarcosApp.Web.Models;
+using MarcosM3.Web.Models;
 
-namespace MarcosApp.Web.Controllers
+namespace MarcosM3.Web.Controllers
 {
     public class HomeController : Controller
     {
