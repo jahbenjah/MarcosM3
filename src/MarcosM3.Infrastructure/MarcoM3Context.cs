@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MarcosM3.Infrastructure
 {
-    public class MarcosM3DbContext : IdentityDbContext
+    public partial class MarcosM3DbContext : IdentityDbContext
     {
         public MarcosM3DbContext()
         {
@@ -20,7 +20,7 @@ namespace MarcosM3.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Moldura>(entity =>
             {

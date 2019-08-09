@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,9 +36,15 @@ namespace MarcosM3.Web
             services.AddDbContext<MarcosM3DbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<MarcosM3DbContext>();
+
+            services.AddIdentity<MarcosM3User, IdentityRole>()
+                .AddEntityFrameworkStores<MarcosM3DbContext>()
+                .AddDefaultTokenProviders();
+
+            services.ConfigureIdentity();
+
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/LogIn");
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
