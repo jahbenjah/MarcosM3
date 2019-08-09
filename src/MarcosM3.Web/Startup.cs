@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MarcosM3.Infrastructure;
+using MarcosM3.Web.Services;
 
 namespace MarcosM3.Web
 {
@@ -45,6 +46,7 @@ namespace MarcosM3.Web
 
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/LogIn");
 
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

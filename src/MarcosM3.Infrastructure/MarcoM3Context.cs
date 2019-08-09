@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MarcosM3.Infrastructure
 {
-    public partial class MarcosM3DbContext : IdentityDbContext
+    public partial class MarcosM3DbContext : IdentityDbContext<MarcosM3User>
     {
         public MarcosM3DbContext()
         {
