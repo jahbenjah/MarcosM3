@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using MarcosM3.Infrastructure;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace MarcosM3.Web
@@ -21,5 +24,16 @@ namespace MarcosM3.Web
             WebHost.CreateDefaultBuilder(args)
                 .UseApplicationInsights()
                 .UseStartup<Startup>();
+
+        public static void MigrateDababase(IWebHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider
+                    .GetRequiredService<MarcosM3DbContext>();
+                context.Database.Migrate();
+            }
+
+        }
     }
 }

@@ -17,7 +17,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
-
+  <ItemGroup>
+    <None Update="marcosm3.db" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\MarcosM3.Core\MarcosM3.Core.csproj" />
     <ProjectReference Include="..\MarcosM3.Infrastructure\MarcosM3.Infrastructure.csproj" />
