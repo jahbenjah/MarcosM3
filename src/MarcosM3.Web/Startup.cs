@@ -34,9 +34,10 @@ namespace MarcosM3.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+
             services.AddDbContext<MarcosM3DbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(
+                    Configuration.GetConnectionString("SqliteConnection")));
 
             services.AddIdentity<MarcosM3User, IdentityRole>()
                 .AddEntityFrameworkStores<MarcosM3DbContext>()

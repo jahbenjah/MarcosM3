@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MarcosM3.Infrastructure.Migrations
 {
-    public partial class Initial : Migration
+    public partial class SQLite : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,12 +50,10 @@ namespace MarcosM3.Infrastructure.Migrations
                 name: "Molduras",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(nullable: false),
                     Nombre = table.Column<string>(nullable: true),
-                    Codigo = table.Column<string>(nullable: true),
                     Precio = table.Column<decimal>(type: "decimal(20,2)", nullable: false),
-                    Desperdicio = table.Column<string>(nullable: true)
+                    Desperdicio = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,7 +65,7 @@ namespace MarcosM3.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -89,7 +86,7 @@ namespace MarcosM3.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -178,8 +175,7 @@ namespace MarcosM3.Infrastructure.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -205,8 +201,7 @@ namespace MarcosM3.Infrastructure.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

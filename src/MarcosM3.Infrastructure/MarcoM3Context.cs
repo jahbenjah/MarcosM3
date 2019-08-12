@@ -12,11 +12,11 @@ namespace MarcosM3.Infrastructure
         public MarcosM3DbContext()
         {
         }
+
         public MarcosM3DbContext(DbContextOptions<MarcosM3DbContext> options) : base(options)
         {
         }
         public DbSet<Moldura> Molduras { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,10 +24,8 @@ namespace MarcosM3.Infrastructure
 
             modelBuilder.Entity<Moldura>(entity =>
             {
-
                 entity.Property(e => e.Precio)
                 .HasColumnType("decimal(20,2)");
-
             });
 
         }
