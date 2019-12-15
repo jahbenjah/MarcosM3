@@ -1,34 +1,23 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <UserSecretsId>aspnet-MarcosM3.Web-EBA1D404-3585-491D-AAD4-01BC6C4E1F6E</UserSecretsId>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <ApplicationInsightsResourceId>/subscriptions/06eacb4a-292e-4fa0-92bf-b97d35f34aa4/resourcegroups/marcosm3/providers/microsoft.insights/components/marcosm3AppInsingt</ApplicationInsightsResourceId>
-    <ApplicationInsightsAnnotationResourceId>/subscriptions/06eacb4a-292e-4fa0-92bf-b97d35f34aa4/resourcegroups/marcosm3/providers/microsoft.insights/components/marcosm3AppInsingt</ApplicationInsightsAnnotationResourceId>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-MarcosM3.Web-AEAE20FD-73C7-457B-9A1E-686C157A21F2</UserSecretsId>
   </PropertyGroup>
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.7.0" />
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.6" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="marcosm3.db" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\MarcosM3.Core\MarcosM3.Core.csproj" />
     <ProjectReference Include="..\MarcosM3.Infrastructure\MarcosM3.Infrastructure.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>
