@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using MarcosM3.Core;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarcosM3.Infrastructure
 {
-    public partial class MarcosM3DbContext : IdentityDbContext<MarcosM3User>
+    public class MarcosM3DbContext : IdentityDbContext
     {
         public MarcosM3DbContext()
         {
@@ -28,6 +29,45 @@ namespace MarcosM3.Infrastructure
                 .HasColumnType("decimal(20,2)");
             });
 
+
+            modelBuilder.Entity<IdentityUser>(b =>
+            {
+                b.ToTable("Usuario");
+            });
+
+            modelBuilder.Entity<IdentityUserClaim<string>>(b =>
+            {
+                b.ToTable("UserioClaims");
+            });
+
+            modelBuilder.Entity<IdentityUserLogin<string>>(b =>
+            {
+                b.ToTable("UserLogins");
+            });
+
+            modelBuilder.Entity<IdentityUserToken<string>>(b =>
+            {
+                b.ToTable("UserTokens");
+            });
+
+            modelBuilder.Entity<IdentityRole>(b =>
+            {
+                b.ToTable("Roles");
+            });
+
+            modelBuilder.Entity<IdentityRoleClaim<string>>(b =>
+            {
+                b.ToTable("RoleClaims");
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(b =>
+            {
+                b.ToTable("UsuarioRoles");
+            });
+
         }
+
+
     }
+
 }

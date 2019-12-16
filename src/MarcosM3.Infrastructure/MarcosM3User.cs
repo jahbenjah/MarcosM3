@@ -3,7 +3,7 @@
 namespace MarcosM3.Infrastructure
 {
 
-    public class MarcosM3User : IdentityUser
+    public class MarcosM3User : IdentityUser<int>
     {
     }
 
