@@ -8,9 +8,9 @@ namespace MarcosM3.Web.Models
     {
         public int Cantidad { get; set; }
 
-        public int Largo { get; set; }
+        public decimal Largo { get; set; }
 
-        public int Ancho { get; set; }
+        public decimal Ancho { get; set; }
 
         public Moldura Moldura { get; set; }
 
