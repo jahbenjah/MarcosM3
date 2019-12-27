@@ -1,0 +1,75 @@
+﻿@model CotizacionViewModel
+@{
+    ViewData["Title"] = "Cotizacion";
+}
+
+<h1>Cotización</h1>
+<form>
+
+    <div class="form-row">
+        <div class="form-group col-md-1">
+            <label asp-for="Cantidad"></label>
+            <input asp-for="Cantidad" class="form-control">
+            <span asp-validation-for="Cantidad" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-1">
+            <label asp-for="Largo"></label>
+            <input asp-for="Largo" class="form-control">
+            <span asp-validation-for="Cantidad" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-1">
+            <label asp-for="Ancho"></label>
+            <input asp-for="Ancho" class="form-control">
+            <span asp-validation-for="Cantidad" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="Moldura"></label>
+            <select asp-for="Moldura" asp-items="@Model.Molduras" class="form-control"></select>
+        </div>
+
+
+
+        <div class="form-group col-md-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Macocel
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Vidrio
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group col-md-2">
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            $('#Moldura').on('change', function () {
+                var valores = this.value;
+                var cantidad = Number($("#Cantidad").val());
+                var largo = Number($("#Largo").val());
+                var ancho = Number($("#Ancho").val());
+                var desperdicio = Number(valores.split(",")[0]);
+                var precioMoldura = Number(valores.split(",")[1]);
+                var precio = 0;
+                precio = (largo + largo + ancho + ancho + desperdicio) * precioMoldura * cantidad / 100;
+                alert(precio);
+            });
+        });
+    </script>
+}
