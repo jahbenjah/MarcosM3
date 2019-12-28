@@ -4,14 +4,16 @@ using MarcosM3.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MarcosM3.Infrastructure.Migrations
 {
     [DbContext(typeof(MarcosM3DbContext))]
-    partial class MarcosM3DbContextModelSnapshot : ModelSnapshot
+    [Migration("20191228220528_SeAgregaTablaClientes")]
+    partial class SeAgregaTablaClientes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

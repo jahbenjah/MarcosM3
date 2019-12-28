@@ -29,10 +29,7 @@ namespace MarcosM3.Web.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        
         public IActionResult Cotizacion()
         {
             var model = new CotizacionViewModel() { Cantidad = 1 };
