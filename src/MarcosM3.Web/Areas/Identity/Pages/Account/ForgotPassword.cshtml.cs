@@ -58,8 +58,8 @@ namespace MarcosM3.Web.Areas.Identity.Pages.Account
 
                 await _emailSender.SendEmailAsync(
                     Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "Resetear contraseña",
+                    $"Por favor resetea tu contraseña <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>dando clic aquí</a>.");
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }
