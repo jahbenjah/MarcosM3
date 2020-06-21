@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MarcosM3.Web.Areas.Identity.Pages.Account.Manage
+namespace Marcos.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {

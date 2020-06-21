@@ -1,8 +1,15 @@
 ﻿@{
-    Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
+    {
+        Layout = (string)parentLayout;
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
 }
 
-<h1>Administra tu cuenta</h1>
+<h2>Administra tu cuenta</h2>
 
 <div>
     <h4>Puedes cambiar la configuracion de tu cuenta</h4>

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace MarcosM3.Web.Areas.Identity.Pages.Account
+namespace Marcos.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class ForgotPasswordModel : PageModel
@@ -58,8 +58,8 @@ namespace MarcosM3.Web.Areas.Identity.Pages.Account
 
                 await _emailSender.SendEmailAsync(
                     Input.Email,
-                    "Resetear contraseña",
-                    $"Por favor resetea tu contraseña <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>dando clic aquí</a>.");
+                    "Reset Password",
+                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

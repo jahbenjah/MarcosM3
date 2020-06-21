@@ -24,7 +24,7 @@ namespace Marcos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MarcosDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<MarcosDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();

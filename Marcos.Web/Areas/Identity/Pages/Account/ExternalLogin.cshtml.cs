@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
-namespace MarcosM3.Web.Areas.Identity.Pages.Account
+namespace Marcos.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class ExternalLoginModel : PageModel
@@ -39,7 +39,7 @@ namespace MarcosM3.Web.Areas.Identity.Pages.Account
         [BindProperty]
         public InputModel Input { get; set; }
 
-        public string LoginProvider { get; set; }
+        public string ProviderDisplayName { get; set; }
 
         public string ReturnUrl { get; set; }
 
@@ -96,7 +96,7 @@ namespace MarcosM3.Web.Areas.Identity.Pages.Account
             {
                 // If the user does not have an account, then ask the user to create an account.
                 ReturnUrl = returnUrl;
-                LoginProvider = info.LoginProvider;
+                ProviderDisplayName = info.ProviderDisplayName;
                 if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
                 {
                     Input = new InputModel
@@ -122,6 +122,7 @@ namespace MarcosM3.Web.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -130,13 +131,6 @@ namespace MarcosM3.Web.Areas.Identity.Pages.Account
                     {
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
 
-                        // If account confirmation is required, we need to show the link if we don't have a real email sender
-                        if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                        {
-                            return RedirectToPage("./RegisterConfirmation", new { Email = Input.Email });
-                        }
-
-                        await _signInManager.SignInAsync(user, isPersistent: false);
                         var userId = await _userManager.GetUserIdAsync(user);
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -149,6 +143,14 @@ namespace MarcosM3.Web.Areas.Identity.Pages.Account
                         await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                             $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
+                        // If account confirmation is required, we need to show the link if we don't have a real email sender
+                        if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                        {
+                            return RedirectToPage("./RegisterConfirmation", new { Email = Input.Email });
+                        }
+
+                        await _signInManager.SignInAsync(user, isPersistent: false, info.LoginProvider);
+
                         return LocalRedirect(returnUrl);
                     }
                 }
@@ -158,7 +160,7 @@ namespace MarcosM3.Web.Areas.Identity.Pages.Account
                 }
             }
 
-            LoginProvider = info.LoginProvider;
+            ProviderDisplayName = info.ProviderDisplayName;
             ReturnUrl = returnUrl;
             return Page();
         }

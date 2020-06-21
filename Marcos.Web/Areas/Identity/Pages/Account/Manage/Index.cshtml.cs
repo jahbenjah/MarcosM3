@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MarcosM3.Web.Areas.Identity.Pages.Account.Manage
+namespace Marcos.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {
@@ -82,8 +82,8 @@ namespace MarcosM3.Web.Areas.Identity.Pages.Account.Manage
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    var userId = await _userManager.GetUserIdAsync(user);
-                    throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
+                    StatusMessage = "Unexpected error when trying to set phone number.";
+                    return RedirectToPage();
                 }
             }
 

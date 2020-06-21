@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace MarcosM3.Web.Areas.Identity.Pages.Account
+namespace Marcos.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class LoginModel : PageModel
@@ -44,15 +44,13 @@ namespace MarcosM3.Web.Areas.Identity.Pages.Account
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "Correo")]
             public string Email { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
-            [Display(Name ="Contraseña")]
             public string Password { get; set; }
 
-            [Display(Name = "¿Recordar usuario?")]
+            [Display(Name = "Remember me?")]
             public bool RememberMe { get; set; }
         }
 
