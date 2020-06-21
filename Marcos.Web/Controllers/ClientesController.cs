@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Marcos.Controllers
 {
+    [Authorize]
     public class ClientesController : Controller
     {
         private readonly MarcosDbContext _context;
