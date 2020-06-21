@@ -4,6 +4,7 @@ using Marcos.Models;
 using Marcos.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Marcos.Controllers
 {

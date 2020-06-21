@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Marcos.Data;
 using Marcos.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
