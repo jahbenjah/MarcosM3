@@ -1,0 +1,154 @@
+﻿@model Marcos.Models.Pedido
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Pedido # @Model.Id  @Model.Estado </h1>
+
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClineteId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClineteId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaPedido)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaPedido)
+        </dd>
+    </dl>
+</div>
+<form>
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Cantidad</label>
+            <input type="number" class="form-control" id="inlineFormInput" placeholder="Cantidad">
+        </div>
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Largo</label>
+            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Largo (cm)">
+        </div>
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Ancho</label>
+            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Ancho (cm)">
+        </div>
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Moldura</label>
+            <select class="form-control" id="inlineFormCustomSelectPref">
+                <option selected>Elige...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </div>
+    </div>
+</form>
+
+@*<form>
+        <div class="form-row">
+            <div class="form-group col-md-1">
+                <label asp-for="Cantidad"></label>
+                <input asp-for="Cantidad" class="form-control">
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-1">
+                <label asp-for="Largo"></label>
+                <input asp-for="Largo" class="form-control">
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-1">
+                <label asp-for="Ancho"></label>
+                <input asp-for="Ancho" class="form-control">
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="Moldura"></label>
+                <select asp-for="Moldura" asp-items="@Model.Molduras" class="form-control"></select>
+            </div>
+
+            <div class="form-group col-md-1">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Macocel
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Maria Luisa
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="form-group col-md-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Sin vidrio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Vidrio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Antireflejante
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group col-md-1">
+                <label asp-for="Precio"></label>
+                <input asp-for="Precio " class="form-control">
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-1">
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+        </div>
+    </form>*@
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            $('#Moldura').on('change', function () {
+                var valores = this.value;
+                var cantidad = Number($("#Cantidad").val());
+                var largo = Number($("#Largo").val());
+                var ancho = Number($("#Ancho").val());
+                var desperdicio = Number(valores.split(",")[0]);
+                var precioMoldura = Number(valores.split(",")[1]);
+                var precio = 0;
+                precio = (largo + largo + ancho + ancho + desperdicio) * precioMoldura * cantidad / 100;
+                $("#Precio").val(new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(precio));
+            });
+        });
+    </script>
+}
+
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Marcos.Models
 {
@@ -7,16 +8,7 @@ namespace Marcos.Models
         public int Id { get; set; }
         public int ClineteId { get; set; }
         public string FechaPedido { get; set; }
-
-    }
-
-    public class PedidoDetalle
-    {
-        public int Id { get; set; }
-        public int Cantidad { get; set; }
-        public decimal PecioUnitario { get; set; }
-        public string Descripcion { get; set; }
-        public decimal Total { get; set; }
-
+        public int Estado { get; set; }
+        public List<PedidoDetalle> Detalles { get; } = new List<PedidoDetalle>();
     }
 }

@@ -16,6 +16,7 @@ namespace Marcos.Models
         public decimal Precio { get; set; }
 
         public int Desperdicio { get; set; }
+
         public bool ConMacocel { get; set; }
 
         public List<SelectListItem> Molduras { get; set; }

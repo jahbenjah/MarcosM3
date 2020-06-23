@@ -18,6 +18,7 @@ namespace Marcos.Data
 
         public DbSet<Cliente> Clientes { get; set; }
 
+        public DbSet<Pedido> Pedidos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
